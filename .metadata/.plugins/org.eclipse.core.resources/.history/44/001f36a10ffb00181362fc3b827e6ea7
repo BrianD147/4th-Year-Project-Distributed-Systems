@@ -1,0 +1,9 @@
+<html>
+<body>
+    <h2>Car Hire Service</h2>
+    <p><a href="webapi/myresouces/write">Hire a Car</a></p>
+    <p><a href="webapi/myresource/read">View All Orders</a></p>
+    <p><a href="webapi/myresouces">Update an Order</a></p>
+    <p><a href="webapi/myresouces">Delete an Order</a></p>
+</body>
+</html>

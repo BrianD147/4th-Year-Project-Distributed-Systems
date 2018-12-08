@@ -3,15 +3,16 @@ use CARHIREDATABASE;
 
 CREATE TABLE IF NOT EXISTS Orders (
 	OrderID int NOT NULL AUTO_INCREMENT,
-	Date DATE Not Null,
-	CustID int Not Null,
+	StartDate DATE NOT NULL,
+	EndDate DATE NOT NULL,
+	CustID int NOT NULL,
 	CarReg varchar(12),
 	PRIMARY KEY (OrderID)
 );
 
-INSERT INTO Orders (OrderID, Date, CustID, CarReg)
-VALUES (1, CURDATE(), 11, "02-G-123"), 
-       (2, CURDATE(), 21, "02-G-125"), 
-	   (3, CURDATE(), 31, "02-G-124");
+INSERT INTO Orders (OrderID, StartDate, EndDate, CustID, CarReg)
+VALUES (1, CURDATE(), CURDATE(), 11, "02-G-123"), 
+       (2, CURDATE(), CURDATE(), 21, "02-G-125"), 
+	   (3, CURDATE(), CURDATE(), 31, "02-G-124");
 	   
 SELECT * FROM Orders;

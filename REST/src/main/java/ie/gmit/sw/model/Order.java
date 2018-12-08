@@ -46,7 +46,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "orderID",
-    "date",
+    "startDate",
+    "endDate",
     "carReg",
     "cust"
 })
@@ -59,16 +60,20 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@XmlElement(name = "OrderID")
     protected int orderID;
-    @XmlElement(name = "Date", required = true)
-    @XmlSchemaType(name = "date")
-    protected Date date;
+    @XmlElement(name = "StartDate", required = true)
+    @XmlSchemaType(name = "StartDate")
+    protected Date startDate;
+    @XmlElement(name = "EndDate", required = true)
+    @XmlSchemaType(name = "EndDate")
+    protected Date endDate;
     protected int cust;
     protected String carReg;
 
-    public Order(int orderID, Date date, int cust, String carReg) {
+    public Order(int orderID, Date startDate, Date endDate, int cust, String carReg) {
 		super();
 		this.orderID = orderID;
-		this.date = date;
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.cust = cust;
 		this.carReg = carReg;
 	}
@@ -94,27 +99,49 @@ public class Order implements Serializable {
     }
 
     /**
-     * Gets the value of the date property.
+     * Gets the value of the startDate property.
      * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
     /**
-     * Sets the value of the date property.
+     * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDate(Date value) {
-        this.date = value;
+    public void setStartDate(Date value) {
+        this.startDate = value;
+    } /**
+     * Gets the value of the startDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * Sets the value of the endDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setEndDate(Date value) {
+        this.endDate = value;
     }
 
     /**

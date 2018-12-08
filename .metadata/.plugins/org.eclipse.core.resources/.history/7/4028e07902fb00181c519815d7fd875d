@@ -1,0 +1,9 @@
+<html>
+<body>
+    <h2>Car Hire Service</h2>
+    <p><a href="webapi/myresource">View All Orders</a>
+    <p><a href="webapi/myresouces">Hire a Car</a>
+    <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
+    for more information on Jersey!
+</body>
+</html>

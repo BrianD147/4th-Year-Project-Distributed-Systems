@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -31,14 +32,37 @@ public class MyResource {
      * @throws MalformedURLException 
      * @throws SQLException 
      */
+	@Path("/read")
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Order> getIt() throws MalformedURLException, RemoteException, Exception, SQLException {
     	DatabaseService ds;
     	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
     	
-    	ds.read();
+    	//ds.read();
         return ds.read();
     }
-    
+	
+	@Path("/write")
+	@GET
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Order> writeIt() throws MalformedURLException, RemoteException, Exception, SQLException {
+    	DatabaseService ds;
+    	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
+    	
+    	//ds.write();
+        return ds.write();
+    }
+	
+	@Path("/delete")
+	@GET
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Order> deleteIt() throws MalformedURLException, RemoteException, Exception, SQLException {
+    	DatabaseService ds;
+    	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
+    	
+    	//ds.write();
+        return ds.delete();
+    }
+	
 }

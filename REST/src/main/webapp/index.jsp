@@ -1,8 +1,20 @@
 <html>
 <body>
-    <h2>Jersey RESTful Web Application!</h2>
-    <p><a href="webapi/myresource">Jersey resource</a>
-    <p>Visit <a href="http://jersey.java.net">Project Jersey website</a>
-    for more information on Jersey!
+    <h2>Car Hire Service</h2>
+    <form action="NewOrder" method="post">
+    	<br/> Start Date <br/>
+    	<input type="date" name="startDate">
+    	<br/> End Date <br/>
+	    <input type="date" name="endDate">
+	    <br/> Customer ID <br/>
+	    <input type="number" name="custID">
+	    <br/> Car Reg <br/>
+	    <input type="text" name="carReg">
+    </form>
+    
+    <p><a href="webapi/myresource/write">Hire a Car</a>
+    <p><a href="webapi/myresource/read">View All Orders</a>
+    <p><a href="webapi/myresource">Update an Order</a>
+    <p><a href="webapi/myresource/delete">Delete an Order</a>
 </body>
 </html>
