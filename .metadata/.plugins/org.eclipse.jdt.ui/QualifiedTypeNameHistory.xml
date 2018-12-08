@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.rmi.Remote"/>
+<fullyQualifiedTypeName name="java.rmi.server.UnicastRemoteObject"/>
+<fullyQualifiedTypeName name="ie.gmit.sw.DatabaseService"/>
+<fullyQualifiedTypeName name="java.rmi.registry.LocateRegistry"/>
+<fullyQualifiedTypeName name="java.rmi.RemoteException"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="ie.gmit.sw.RMI.DatabaseService"/>
+<fullyQualifiedTypeName name="java.rmi.Naming"/>
+</qualifiedTypeNameHistroy>

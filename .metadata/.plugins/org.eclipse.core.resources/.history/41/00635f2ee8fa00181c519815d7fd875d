@@ -1,0 +1,11 @@
+package ie.gmit.sw.RMI;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
+public interface DatabaseService extends Remote {
+	
+	public void read() throws RemoteException, SQLException;
+
+}
