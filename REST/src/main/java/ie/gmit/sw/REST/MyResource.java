@@ -2,7 +2,6 @@ package ie.gmit.sw.REST;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,8 +20,7 @@ import ie.gmit.sw.model.Order;
  */
 @Path("myresource")
 public class MyResource {
-
-    /**
+     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
      *
@@ -39,19 +37,27 @@ public class MyResource {
     	DatabaseService ds;
     	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
     	
-    	//ds.read();
         return ds.read();
     }
 	
 	@Path("/write")
-	@GET
+	@POST
     @Produces(MediaType.APPLICATION_XML)
-    public List<Order> writeIt() throws MalformedURLException, RemoteException, Exception, SQLException {
+    public List<Order> writeIt(String input) throws MalformedURLException, RemoteException, Exception, SQLException {
     	DatabaseService ds;
     	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
     	
-    	//ds.write();
-        return ds.write();
+        return ds.write(input);
+    }
+	
+	@Path("/update")
+	@GET
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Order> updateIt() throws MalformedURLException, RemoteException, Exception, SQLException {
+    	DatabaseService ds;
+    	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
+    	
+        return ds.update();
     }
 	
 	@Path("/delete")
@@ -61,7 +67,6 @@ public class MyResource {
     	DatabaseService ds;
     	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
     	
-    	//ds.write();
         return ds.delete();
     }
 	

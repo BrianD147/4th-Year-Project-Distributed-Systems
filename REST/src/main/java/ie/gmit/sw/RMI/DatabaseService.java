@@ -10,7 +10,8 @@ import ie.gmit.sw.model.Order;
 public interface DatabaseService extends Remote {
 	
 	public List<Order> read() throws RemoteException, SQLException;
-	public List<Order> write() throws RemoteException, SQLException;
+	public List<Order> write(String input) throws RemoteException, SQLException;
+	public List<Order> update() throws RemoteException, SQLException;
 	public List<Order> delete() throws RemoteException, SQLException;
 
 }

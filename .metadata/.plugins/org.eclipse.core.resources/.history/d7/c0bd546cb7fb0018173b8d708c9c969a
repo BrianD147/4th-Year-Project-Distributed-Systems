@@ -1,0 +1,17 @@
+<html>
+<body>
+    <h2>Hire a Car</h2>
+    <form action="NewOrder" method="post">
+    	<br/> Start Date <br/>
+    	<input type="date" name="startDate">
+    	<br/> End Date <br/>
+	    <input type="date" name="endDate">
+	    <br/> Customer ID <br/>
+	    <input type="number" name="custID">
+	    <br/> Car Reg <br/>
+	    <input type="text" name="carReg">
+	    <br/><br/>
+	    <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

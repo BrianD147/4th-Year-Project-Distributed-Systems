@@ -62,14 +62,14 @@ public class Order implements Serializable {
     protected int orderID;
     @XmlElement(name = "StartDate", required = true)
     @XmlSchemaType(name = "StartDate")
-    protected Date startDate;
+    protected String startDate;
     @XmlElement(name = "EndDate", required = true)
     @XmlSchemaType(name = "EndDate")
-    protected Date endDate;
+    protected String endDate;
     protected int cust;
     protected String carReg;
 
-    public Order(int orderID, Date startDate, Date endDate, int cust, String carReg) {
+    public Order(int orderID, String startDate, String endDate, int cust, String carReg) {
 		super();
 		this.orderID = orderID;
 		this.startDate = startDate;
@@ -106,7 +106,7 @@ public class Order implements Serializable {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
@@ -118,7 +118,7 @@ public class Order implements Serializable {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setStartDate(Date value) {
+    public void setStartDate(String value) {
         this.startDate = value;
     } /**
      * Gets the value of the startDate property.
@@ -128,7 +128,7 @@ public class Order implements Serializable {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
@@ -140,7 +140,7 @@ public class Order implements Serializable {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setEndDate(Date value) {
+    public void setEndDate(String value) {
         this.endDate = value;
     }
 
