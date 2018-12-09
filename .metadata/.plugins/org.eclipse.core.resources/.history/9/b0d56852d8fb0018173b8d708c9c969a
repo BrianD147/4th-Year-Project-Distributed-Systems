@@ -151,7 +151,7 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		
 		List<Order> carList = new ArrayList<Order>();
 		
-		String deleteQuery = "DELETE FROM Orders WHERE " + input + ";";
+		String deleteQuery = "DELETE FROM Orders WHERE OrderID = 4;";
 		
 		stat.executeUpdate(deleteQuery);
 		

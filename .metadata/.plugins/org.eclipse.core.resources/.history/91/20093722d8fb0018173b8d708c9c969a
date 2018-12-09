@@ -61,7 +61,7 @@ public class MyResource {
     }
 	
 	@Path("/delete")
-	@POST
+	@GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Order> deleteIt(String input) throws MalformedURLException, RemoteException, Exception, SQLException {
     	DatabaseService ds;
