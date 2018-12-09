@@ -51,7 +51,7 @@ public class MyResource {
     }
 	
 	@Path("/update")
-	@POST
+	@GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Order> updateIt(String input) throws MalformedURLException, RemoteException, Exception, SQLException {
     	DatabaseService ds;

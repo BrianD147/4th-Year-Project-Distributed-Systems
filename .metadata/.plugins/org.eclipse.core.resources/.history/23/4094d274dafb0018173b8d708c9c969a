@@ -113,6 +113,7 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		
 		input = input.replace("startDate=", "");
 		input = input.replace("endDate=", "");
+		input = input.replace("custID=", "");
 		input = input.replace("carReg=", "");
 		
 		String[] inputParts = input.split("&");
@@ -124,7 +125,7 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		
 		List<Order> carList = new ArrayList<Order>();
 		
-		String updateQuery = "UPDATE Orders SET startDate='" + inputParts[1] + "', endDate='" + inputParts[2] + "', " + inputParts[3] + ", carReg='" + inputParts[4] + "' WHERE " + inputParts[0];
+		String updateQuery = "UPDATE Orders SET CustID = '99', CarReg = '03-G-126' WHERE OrderID = 4;";
 		
 		stat.executeUpdate(updateQuery);
 		

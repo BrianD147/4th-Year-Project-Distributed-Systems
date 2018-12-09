@@ -51,13 +51,13 @@ public class MyResource {
     }
 	
 	@Path("/update")
-	@POST
+	@GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Order> updateIt(String input) throws MalformedURLException, RemoteException, Exception, SQLException {
+    public List<Order> updateIt() throws MalformedURLException, RemoteException, Exception, SQLException {
     	DatabaseService ds;
     	ds = (DatabaseService) Naming.lookup("rmi://127.0.0.1:1099/database");
     	
-        return ds.update(input);
+        return ds.update();
     }
 	
 	@Path("/delete")

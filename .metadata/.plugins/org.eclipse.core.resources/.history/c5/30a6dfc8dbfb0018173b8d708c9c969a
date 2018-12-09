@@ -124,7 +124,7 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		
 		List<Order> carList = new ArrayList<Order>();
 		
-		String updateQuery = "UPDATE Orders SET startDate='" + inputParts[1] + "', endDate='" + inputParts[2] + "', " + inputParts[3] + ", carReg='" + inputParts[4] + "' WHERE " + inputParts[0];
+		String updateQuery = "UPDATE Orders SET '" + inputParts[1] + "', '" + inputParts[2] + "', " + inputParts[3] + ", '" + inputParts[4] + "' WHERE " + inputParts[0];
 		
 		stat.executeUpdate(updateQuery);
 		
