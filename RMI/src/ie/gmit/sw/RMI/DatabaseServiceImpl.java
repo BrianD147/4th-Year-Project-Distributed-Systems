@@ -111,20 +111,34 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		System.out.println("In update");
 		stat = con.createStatement();
 		
-		input = input.replace("startDate=", "");
-		input = input.replace("endDate=", "");
-		input = input.replace("carReg=", "");
+		System.out.println("Before: " + input);
 		
 		String[] inputParts = input.split("&");
+		
+		System.out.println("First position: " + inputParts[0]);
+		input = input.replace(inputParts[0], "");
+		input = input.replace("&", "', ");
+		input = input.replace("', startDate=", "startDate='");
+		input = input.replace("endDate=", "endDate='");
+		input = input.replace("custID=", "custID='");
+		input = input.replace("carReg=", "carReg='");
+		
+		input = input.replace("startDate='',", "");
+		input = input.replace("endDate='',", "");
+		input = input.replace("custID='',", "");
+		input = input.replace("carReg=''", "");
+		
+		input = input + "'";
+		
+		System.out.println("After: " + input);
 		
 		for (int j = 0; j < inputParts.length; j++) {
 			System.out.println("->> " + inputParts[j]);
 		}
 		
-		
 		List<Order> carList = new ArrayList<Order>();
 		
-		String updateQuery = "UPDATE Orders SET startDate='" + inputParts[1] + "', endDate='" + inputParts[2] + "', " + inputParts[3] + ", carReg='" + inputParts[4] + "' WHERE " + inputParts[0];
+		String updateQuery = "UPDATE Orders SET " + input + " WHERE " + inputParts[0] + ";";
 		
 		stat.executeUpdate(updateQuery);
 		

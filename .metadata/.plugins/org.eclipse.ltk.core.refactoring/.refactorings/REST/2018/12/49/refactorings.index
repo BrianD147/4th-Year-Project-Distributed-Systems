@@ -3,3 +3,6 @@
 1544365139457	Delete element
 1544376013575	Copy file
 1544377000934	Copy file
+1544382752096	Move file
+1544382770390	Move 'deleteOrder.jsp' to 'WEB-INF'
+1544382774992	Move 'deleteOrder.jsp' to 'webapp'

@@ -7,5 +7,6 @@
 	    <br/><br/>
 	    <input type="submit" value="Submit">
     </form>
+    <p><a href="index.jsp">Back to menu</a>
 </body>
 </html>
