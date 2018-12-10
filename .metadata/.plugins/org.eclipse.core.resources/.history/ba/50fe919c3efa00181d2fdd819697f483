@@ -1,7 +1,0 @@
-package ie.gmit.sw;
-
-import java.rmi.server.UnicastRemoteObject;
-
-public class DatabaseServiceImpl extends UnicastRemoteObject implements DatabaseService {
-
-}

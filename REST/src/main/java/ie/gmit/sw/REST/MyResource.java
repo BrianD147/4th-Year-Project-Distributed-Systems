@@ -30,6 +30,9 @@ public class MyResource {
      * @throws MalformedURLException 
      * @throws SQLException 
      */
+	
+	// The HTML form doesn't allow anything but GET and POST methods, so each of the following /read, /write, /update and /delete methods use GET and POST only
+	
 	@Path("/read")
     @GET
     @Produces(MediaType.APPLICATION_XML)

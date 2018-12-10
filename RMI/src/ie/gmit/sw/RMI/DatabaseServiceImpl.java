@@ -18,7 +18,8 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 	private static final long serialVersionUID = 1L;
 	private Connection con;
 	private Statement stat;
-
+	
+	//establish a connection to the database
 	protected DatabaseServiceImpl() throws RemoteException, SQLException {
 		super();
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CARHIREDATABASE?useSSL=false", "root", "");
@@ -29,12 +30,13 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		System.out.println("In read");
 		stat = con.createStatement();
 		
-		List<Order> carList = new ArrayList<Order>();
+		List<Order> orderList = new ArrayList<Order>(); // List to hold all orders
 		
-		String selectQuery = "select * from orders ORDER BY OrderID";
+		String selectQuery = "select * from orders ORDER BY OrderID"; // query to get all items in the table
 		
-		ResultSet rs = stat.executeQuery(selectQuery);
+		ResultSet rs = stat.executeQuery(selectQuery); // execute query
 		
+		// read all lines the query returns
 		while(rs.next()){
 			int OrderID = rs.getInt("OrderID");
 			String StartDate = rs.getString("StartDate");
@@ -45,15 +47,18 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 			Order o = new Order();
 			//Order o = new Order(OrderID, StartDate, EndDate, CustID, CarReg);
 			
+			// set all variables to the order
 			o.setOrderID(OrderID);
 			o.setStartDate(StartDate);
 			o.setEndDate(EndDate);
 			o.setCust(CustID);
 			o.setCarReg(CarReg);
 			
-			carList.add(o);
+			// add the order to the list
+			orderList.add(o);
 		}
-		return carList;
+		// return the list
+		return orderList;
 	}
 	
 	@Override
@@ -62,28 +67,31 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		//System.out.println(input);
 		stat = con.createStatement();
 				
+		// edit the input to remove unneeded substrings
 		input = input.replace("startDate=", "");
 		input = input.replace("endDate=", "");
 		input = input.replace("custID=", "");
 		input = input.replace("carReg=", "");
 		
-		String[] inputParts = input.split("&");
+		String[] inputParts = input.split("&"); // split the string into an array, making the use of each part much easier
 		
 		for (int j = 0; j < inputParts.length; j++) {
 			System.out.println("->> " + inputParts[j]);
 		}
 		
-		List<Order> carList = new ArrayList<Order>();
+		List<Order> orderList = new ArrayList<Order>(); // List to hold all orders
 		
+		// write query using values from input
 		String writeQuery = "INSERT INTO Orders (OrderID, StartDate, EndDate, CustID, CarReg) VALUES " + 
 							"(NULL, '" + inputParts[0] + "', '" + inputParts[1] + "', " + inputParts[2] + ", '" + inputParts[3] + "');";
 		
-		stat.executeUpdate(writeQuery);
+		stat.executeUpdate(writeQuery); // execute query
 		
-		String selectQuery = "select * from orders ORDER BY OrderID";
+		String selectQuery = "select * from orders ORDER BY OrderID"; // query to get all items in the table
 		
-		ResultSet rs = stat.executeQuery(selectQuery);
+		ResultSet rs = stat.executeQuery(selectQuery); // execute query
 		
+		// read all lines the query returns
 		while(rs.next()){
 			int OrderID = rs.getInt("OrderID");
 			String StartDate = rs.getString("StartDate");
@@ -94,16 +102,18 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 			Order o = new Order();
 			//Order o = new Order(OrderID, Date, CustID, CarReg);
 			
+			// set all variables to the order
 			o.setOrderID(OrderID);
 			o.setStartDate(StartDate);
 			o.setEndDate(EndDate);
 			o.setCust(CustID);
 			o.setCarReg(CarReg);
 			
-			carList.add(o);
+			// add the order to the list
+			orderList.add(o);
 		}
-		
-		return carList;
+		// return the list
+		return orderList;
 	}
 	
 	@Override
@@ -111,11 +121,13 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		System.out.println("In update");
 		stat = con.createStatement();
 		
-		System.out.println("Before: " + input);
+		//System.out.println("Before: " + input);
 		
-		String[] inputParts = input.split("&");
+		String[] inputParts = input.split("&"); // split the string into an array, making the use of each part much easier
 		
-		System.out.println("First position: " + inputParts[0]);
+		//System.out.println("First position: " + inputParts[0]);
+		
+		// edit the input to fit the query request below
 		input = input.replace(inputParts[0], "");
 		input = input.replace("&", "', ");
 		input = input.replace("', startDate=", "startDate='");
@@ -136,22 +148,25 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 			input = input.substring(0, input.length()-1);
 		}
 		
-		System.out.println("After: " + input);
+		//System.out.println("After: " + input);
 		
+		/*
 		for (int j = 0; j < inputParts.length; j++) {
 			System.out.println("->> " + inputParts[j]);
 		}
+		*/
 		
-		List<Order> carList = new ArrayList<Order>();
+		List<Order> orderList = new ArrayList<Order>(); // List to hold all orders
 		
-		String updateQuery = "UPDATE Orders SET " + input + " WHERE " + inputParts[0] + ";";
+		String updateQuery = "UPDATE Orders SET " + input + " WHERE " + inputParts[0] + ";"; //query to update table
 		
-		stat.executeUpdate(updateQuery);
+		stat.executeUpdate(updateQuery); // execute query
 		
-		String selectQuery = "select * from orders ORDER BY OrderID";
+		String selectQuery = "select * from orders ORDER BY OrderID"; // query to get all items in the table
 		
-		ResultSet rs = stat.executeQuery(selectQuery);
+		ResultSet rs = stat.executeQuery(selectQuery); // execute query
 		
+		// read all lines the query returns
 		while(rs.next()){
 			int OrderID = rs.getInt("OrderID");
 			String StartDate = rs.getString("StartDate");
@@ -162,16 +177,18 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 			Order o = new Order();
 			//Order o = new Order(OrderID, Date, CustID, CarReg);
 			
+			// set all variables to the order
 			o.setOrderID(OrderID);
 			o.setStartDate(StartDate);
 			o.setEndDate(EndDate);
 			o.setCust(CustID);
 			o.setCarReg(CarReg);
 			
-			carList.add(o);
+			// add the order to the list
+			orderList.add(o);
 		}
-		
-		return carList;
+		// return the list
+		return orderList;
 	}
 
 	@Override
@@ -180,16 +197,17 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		System.out.println("->> " + input);
 		stat = con.createStatement();
 		
-		List<Order> carList = new ArrayList<Order>();
+		List<Order> orderList = new ArrayList<Order>(); // List to hold all orders
 		
-		String deleteQuery = "DELETE FROM Orders WHERE " + input + ";";
+		String deleteQuery = "DELETE FROM Orders WHERE " + input + ";"; //query to delete order from table
 		
-		stat.executeUpdate(deleteQuery);
+		stat.executeUpdate(deleteQuery); // execute query
 		
-		String selectQuery = "select * from orders ORDER BY OrderID";
+		String selectQuery = "select * from orders ORDER BY OrderID"; // query to get all items in the table
 		
-		ResultSet rs = stat.executeQuery(selectQuery);
+		ResultSet rs = stat.executeQuery(selectQuery); // execute query
 		
+		// read all lines the query returns
 		while(rs.next()){
 			int OrderID = rs.getInt("OrderID");
 			String StartDate = rs.getString("StartDate");
@@ -200,16 +218,18 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 			Order o = new Order();
 			//Order o = new Order(OrderID, Date, CustID, CarReg);
 			
+			// set all variables to the order
 			o.setOrderID(OrderID);
 			o.setStartDate(StartDate);
 			o.setEndDate(EndDate);
 			o.setCust(CustID);
 			o.setCarReg(CarReg);
 			
-			carList.add(o);
+			// add the order to the list
+			orderList.add(o);
 		}
-		
-		return carList;
+		// return the list
+		return orderList;
 	}
 
 }
