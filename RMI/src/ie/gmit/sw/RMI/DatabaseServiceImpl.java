@@ -122,13 +122,19 @@ public class DatabaseServiceImpl extends UnicastRemoteObject implements Database
 		input = input.replace("endDate=", "endDate='");
 		input = input.replace("custID=", "custID='");
 		input = input.replace("carReg=", "carReg='");
+
+		input = input + "'";
 		
 		input = input.replace("startDate='',", "");
 		input = input.replace("endDate='',", "");
 		input = input.replace("custID='',", "");
 		input = input.replace("carReg=''", "");
 		
-		input = input + "'";
+		input = input.replaceAll(" ", "");
+		
+		if(input.endsWith(",")){
+			input = input.substring(0, input.length()-1);
+		}
 		
 		System.out.println("After: " + input);
 		
