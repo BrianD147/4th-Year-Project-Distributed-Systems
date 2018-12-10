@@ -1,9 +1,11 @@
 <html>
 <body>
     <h2>Update an Order</h2>
+    <i>Please specify which Order ID you wish to update, then fill out any input box you wish to edit</i>
     <form action="webapi/myresource/update" method="post">
     	<br/> Order ID <br/>
     	<input type="number" name="orderID">
+    	<br/>
     	<br/> Start Date <br/>
     	<input type="date" name="startDate">
     	<br/> End Date <br/>

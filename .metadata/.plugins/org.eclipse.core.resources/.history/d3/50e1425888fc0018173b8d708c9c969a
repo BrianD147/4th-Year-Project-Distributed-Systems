@@ -5,7 +5,6 @@
     <form action="webapi/myresource/update" method="post">
     	<br/> Order ID <br/>
     	<input type="number" name="orderID">
-    	<br/>
     	<br/> Start Date <br/>
     	<input type="date" name="startDate">
     	<br/> End Date <br/>

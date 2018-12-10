@@ -1,6 +1,7 @@
 <html>
 <body>
     <h2>Hire a Car</h2>
+    <i>Please fill all input boxes (no blanks)</i>
     <form action="webapi/myresource/write" method="post">
     	<br/> Start Date <br/>
     	<input type="date" name="startDate">
